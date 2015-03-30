@@ -51,12 +51,12 @@
             <div id="design-lab">
             </div>
         </div>
-        <link rel="stylesheet" href="libs/bootstrap-3.3.4-dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="libs/font-awesome-4.3.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="css/main.css" />
-        <script src="libs/jquery-2.1.3.min.js"></script>
-        <script src="libs/three.min.js"></script>
-        <script src="libs/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
+        <link rel="stylesheet" href="public/libs/bootstrap-3.3.4-dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="public/libs/font-awesome-4.3.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="public/css/main.css" />
+        <script src="public/libs/jquery-2.1.3.min.js"></script>
+        <script src="public/libs/three.min.js"></script>
+        <script src="public/libs/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+        <script src="public/js/main.js"></script>
     </body>
 </html>

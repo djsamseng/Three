@@ -1,4 +1,4 @@
 <?php
 
-require_once("../private/view/home.php");
+require_once("private/view/home.php");
 ?>

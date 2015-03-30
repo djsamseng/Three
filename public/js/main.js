@@ -45,7 +45,7 @@ function init() {
     scene = new THREE.Scene();
     sceneCube = new THREE.Scene();
     
-    var path = "textures/";
+    var path = "public/textures/";
     var format = '.jpg';
     var urls = [
         path + 'px' + format, path + 'nx' + format,
