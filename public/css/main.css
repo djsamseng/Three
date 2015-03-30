@@ -1,0 +1,34 @@
+#design-lab {
+    width: 400px;
+    height: 400px;
+    float: none;
+    margin: 0 auto;
+}
+
+.navbar {
+    color: #777;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-top:6px;
+    padding-bottom:6px;
+    min-height: 0px;
+}
+.nav>li {
+    padding-left:15px;
+    padding-right:15px;
+}
+
+.nav .after-icon {
+    padding-left: 3px;
+}
+
+.navbar-nav {
+    float:none;
+    display: inline-block;
+}
+
+.center {
+    float:none;
+    display: inline-block;
+}
