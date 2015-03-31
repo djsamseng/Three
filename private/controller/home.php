@@ -1,4 +1,3 @@
 <?php
-
-require_once("private/view/home.php");
+render("lab/lab.php");
 ?>

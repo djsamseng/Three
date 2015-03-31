@@ -1,7 +1,6 @@
 #design-lab {
-    width: 400px;
+    width: 100%;
     height: 400px;
-    float: none;
     margin: 0 auto;
 }
 
@@ -13,6 +12,7 @@
     padding-top:6px;
     padding-bottom:6px;
     min-height: 0px;
+    margin-bottom: 30px;
 }
 .nav>li {
     padding-left:15px;
@@ -28,7 +28,12 @@
     display: inline-block;
 }
 
-.center {
-    float:none;
-    display: inline-block;
+.border {
+    border: 1px solid #777;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.controls {
+    min-height: 400px;
 }

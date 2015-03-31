@@ -1,26 +1,18 @@
 var container = $('#design-lab');
-
-var camera, scene, renderer;
+var WIDTH = container.innerWidth(), HEIGHT = container.innerHeight(), VIEW_ANGLE = 45, ASPECT = WIDTH / HEIGHT, NEAR = 1, FAR = 10000;
+var ROTATION_AMOUNT = 0.01;
+var parentObj, renderer, scene, camera;
 var cameraCube, sceneCube;
 
-var mesh, lightMesh, geometry;
-var spheres = [];
+main();
 
-var directionalLight, pointLight;
+function main() {
+    var meshes = []; 
+    init(meshes);
+    animate();
+}
 
-var mouseX = 0, mouseY = 0;
-
-var windowHalfX = window.innerWidth / 2;
-var windowHalfY = window.innerHeight / 2;
-
-var WIDTH = container.innerWidth(), HEIGHT = container.innerHeight(), VIEW_ANGLE = 45, ASPECT = WIDTH / HEIGHT, NEAR = 1, FAR = 10000;
-
-
-
-init();
-animate();
-
-function addGeometry(geometry, x, y, textureCube) {
+function addGeometry(geometry, x, y, textureCube, pivot, meshes) {
     var material = new THREE.MeshBasicMaterial({ 
         color: 0xffffff, 
         envMap: textureCube, 
@@ -32,12 +24,13 @@ function addGeometry(geometry, x, y, textureCube) {
     mesh.position.x = x;
     mesh.position.y = y;
     
-    scene.add( mesh );
-    spheres.push( mesh );
+    pivot.add(mesh);
+    //scene.add( mesh );
+    meshes.push( mesh );
 
 }
 
-function init() {
+function init(meshes) {
     camera = new THREE.PerspectiveCamera( 60, ASPECT, NEAR, FAR);
     camera.position.z = 3200;
     cameraCube = new THREE.PerspectiveCamera( 60, ASPECT, 1, 100000 );
@@ -54,9 +47,18 @@ function init() {
     ];
     var textureCube = THREE.ImageUtils.loadTextureCube( urls, THREE.CubeRefractionMapping );
     
-    addGeometry(new THREE.CylinderGeometry(20, 20, 200, 200, 100, false), 0, 0, textureCube);
-    addGeometry(new THREE.CylinderGeometry(20, 50, 100, 0, 0, false), 0, -600, textureCube);
-    addGeometry(new THREE.CylinderGeometry(10, 10, 70, 0, 0, false), 200, 200, textureCube);
+    parentObj = new THREE.Object3D();
+    scene.add(parentObj);
+    var pivot1 = new THREE.Object3D();
+    var pivot2 = new THREE.Object3D();
+    var pivot3 = new THREE.Object3D();
+    parentObj.add(pivot1);
+    parentObj.add(pivot2);
+    parentObj.add(pivot3);
+
+    addGeometry(new THREE.CylinderGeometry(20, 20, 200, 200, 100, false), 0, 600, textureCube, pivot1, meshes);
+    addGeometry(new THREE.CylinderGeometry(20, 50, 100, 0, 0, false), 0, 0, textureCube, pivot2, meshes);
+    addGeometry(new THREE.CylinderGeometry(10, 10, 70, 0, 0, false), 200, 800, textureCube, pivot3, meshes);
     // Skybox
 
     var shader = THREE.ShaderLib[ "cube" ];
@@ -70,9 +72,9 @@ function init() {
         depthWrite: false,
         side: THREE.BackSide
 
-    } ),
+    } );
 
-    mesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), material );
+    var mesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), material );
     sceneCube.add( mesh );
 
     //
@@ -95,6 +97,16 @@ function animate() {
 function render() {
     renderer.render( sceneCube, cameraCube );
     renderer.render( scene, camera );
+
+    rotate(true, true);
+    rotate(false, true);
+
 }
 
-
+function rotate(vertical, up) {
+    if (vertical) {
+        parentObj.rotation.y += ROTATION_AMOUNT * (up ? 1 : -1);
+    } else {
+        parentObj.rotation.x += ROTATION_AMOUNT * (up ? 1 : -1);
+    }
+}
