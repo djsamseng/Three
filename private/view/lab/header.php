@@ -13,15 +13,38 @@
                         </div>
                     </div>
             </div>
-            <div class="container text-center">
+            <div class="container-fluid text-center">
                 <nav class="hidden-xs hidden-ks">
-                                <ul class="nav navbar-nav navbar">
-                    <li>Products</li>
-                    <li>DLabs</li>
-                    <li>Templates</li>
-                    <li>About Us</li>
-                    <li>Your Account</li>
+                    <div class="navbar-default navbar-main">
+                    <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            DLabs
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Templates
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Your Account
+                        </a>
+                    </li>
                 </ul>
+                </div>
+                </nav>
             </div>
 
         </header>
